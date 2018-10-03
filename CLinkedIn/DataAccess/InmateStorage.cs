@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using CLinkedIn.Models;
-using ClinkedIn_BigBoi.Models;
 
-namespace ClinkedIn_BigBoi.DataAccess
+namespace CLinkedIn.DataAccess
 {
     class InmateStorage
     {
