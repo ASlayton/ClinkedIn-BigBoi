@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CLinkedIn.Models;
-using CLinkedIn.DataAccess;
 
 namespace CLinkedIn.Controllers
 {
@@ -43,7 +42,6 @@ namespace CLinkedIn.Controllers
         [HttpGet("{id}", Name = "AvailableService")]
         public string Get(int id)
         {
-            var inmate = _s
             var Available = 
             return Available;
         }
