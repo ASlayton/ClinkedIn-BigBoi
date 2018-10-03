@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using CLinkedIn.Models;
 
 namespace CLinkedIn.Controllers
 {
@@ -11,36 +12,50 @@ namespace CLinkedIn.Controllers
     [ApiController]
     public class ServicesController : ControllerBase
     {
-        // GET: api/Services
-        [HttpGet]
-        public IEnumerable<string> Get()
+        static List<Services> Services;
+        static ServicesController()
         {
-            return new string[] { "value1", "value2" };
+            Services = new List<Services>
+            {
+                new Services {Type = ServiceType.Haberdasher, Fees = "10 bottlecaps"},
+                new Services {Type = ServiceType.Protector, Fees = "100 bottlecaps"},
+                new Services {Type = ServiceType.Assassin, Fees = "100000 bottlecaps"},
+                new Services {Type = ServiceType.SnuggleBuddy, Fees = "100 bottlecaps"},
+                new Services {Type = ServiceType.Smuggler, Fees = "100 bottlecaps"},
+                new Services {Type = ServiceType.Priest, Fees = "10 bottlecaps"},
+                new Services {Type = ServiceType.Tattooist, Fees = "100 bottlecaps"},
+                new Services {Type = ServiceType.Hairdresser, Fees = "50 bottlecaps"},
+                new Services {Type = ServiceType.Trainer, Fees = "50 bottlecaps"},
+                new Services {Type = ServiceType.Snitch, Fees = "20 bottlecaps"},
+                new Services {Type = ServiceType.Mama, Fees = "50 bottlecaps"},
+            };
+        }
+
+        // GET: api/Services- Returns all Existing Services
+        [HttpGet]
+        public ActionResult<IEnumerable<Services>> GetAll()
+        {
+            return Services;
         }
 
         // GET: api/Services/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //[HttpGet("{id}", Name = "AvailableService")]
+        //public string Get(int id)
+        //{
+        //    var availableInmatesServices = Services.Where(services => services.Type == );
+        //    return Ok(availableInmatesServices);
+        //}
 
         // POST: api/Services
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //}
 
         // PUT: api/Services/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
     }
 }
