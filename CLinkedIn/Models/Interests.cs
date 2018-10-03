@@ -7,7 +7,7 @@ namespace CLinkedIn.Models
 {
     public class Interests
     {
-        public InterestType Type { get; set; },
+        public InterestType Type { get; set; }
     }
     public enum InterestType
     {
