@@ -41,21 +41,19 @@ namespace CLinkedIn.Controllers
         // GET: api/Services/5
         //[HttpGet("{id}", Name = "AvailableService")]
         //public string Get(int id)
-        //{
-        //    var availableInmatesServices = Services.Where(services => services.Type == );
-        //    return Ok(availableInmatesServices);
-        //}
+        //{}
 
-        // POST: api/Services
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        //POST: api/Services
+        [HttpPost]
+        public IActionResult AddAService(Services services)
+        {
+            Services.Add(services);
+            return Ok();
+        }
 
         // PUT: api/Services/5
         //[HttpPut("{id}")]
         //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        //{}
     }
 }
