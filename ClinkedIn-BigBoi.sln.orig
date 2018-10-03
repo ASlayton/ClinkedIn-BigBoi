@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 <<<<<<< HEAD
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLinkedIn", "CLinkedIn\CLinkedIn.csproj", "{D43DB58E-4F7A-435E-850B-1F3FE442258A}"
 =======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLinkedIn", "CLinkedIn\CLinkedIn.csproj", "{D43DB58E-4F7A-435E-850B-1F3FE442258A}"
 >>>>>>> master
 EndProject
 Global
