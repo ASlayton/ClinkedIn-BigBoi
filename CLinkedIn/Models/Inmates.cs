@@ -4,9 +4,9 @@ using System.Text;
 using CLinkedIn.Models;
 
 
-namespace ClinkedIn_BigBoi.Models
+namespace CLinkedIn.Models
 {
-    class Inmates
+    public class Inmates
     {
         public int Id { get; set; }
         public string Name { get; set; }
