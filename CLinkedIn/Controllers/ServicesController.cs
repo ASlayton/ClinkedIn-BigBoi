@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CLinkedIn.Models;
+using CLinkedIn.DataAccess;
 
 namespace CLinkedIn.Controllers
 {
@@ -39,9 +40,13 @@ namespace CLinkedIn.Controllers
         }
 
         // GET: api/Services/5
-        //[HttpGet("{id}", Name = "AvailableService")]
-        //public string Get(int id)
-        //{}
+        [HttpGet("{id}", Name = "AvailableService")]
+        public string Get(int id)
+        {
+            var inmate = _s
+            var Available = 
+            return Available;
+        }
 
         //POST: api/Services
         [HttpPost]
