@@ -1,21 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace ClinkedIn_BigBoi.Models
+namespace CLinkedIn.Models
 {
     public class Services
     {
-        public string ServiceType Type { get; set; }
-    public string Fees { get; set; }
-}
+        public string Fees { get; set; }
+        public ServiceType Type { get; set; }
+    }
 
-public enum ServiceType
-{
-    Protector,
-    Haberdasher,
-    Assassin,
-    SnuggleBuddy,
-
-}
+    public enum ServiceType
+    {
+        Haberdasher,
+        Protector,
+        Assassin,
+        SnuggleBuddy,
+        Smuggler,
+        Priest,
+        Tattooist,
+        Hairdresser,
+        Trainer,
+        Snitch,
+        Mama
+    }
 }
