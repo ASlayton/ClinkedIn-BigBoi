@@ -6,7 +6,7 @@ using ClinkedIn_BigBoi.Models;
 
 namespace ClinkedIn_BigBoi.DataAccess
 {
-    class InmateStorage
+    public class InmateStorage
     {
         static List<Inmates> _inmates = new List<Inmates>();
 
@@ -23,5 +23,6 @@ namespace ClinkedIn_BigBoi.DataAccess
         {
             return _inmates.Find(inmate => inmate.Id == id);
         }
+       
     }
 }
