@@ -39,7 +39,7 @@ namespace CLinkedIn.Controllers
             return Ok(inmates);
         }
  
-        [HttpGet("CheezIts")]
+        [HttpGet("{Interests}")]
         public ActionResult<IEnumerable<Interests>> GetInmatesInterestedInCheezIts()
         {
             var storage = new InmateStorage();
