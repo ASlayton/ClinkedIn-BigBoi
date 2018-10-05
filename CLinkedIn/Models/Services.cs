@@ -7,10 +7,15 @@ namespace CLinkedIn.Models
 {
     public class Services
     {
+        public Services(string theFees, ServiceType Type)
+        {
+            var fees = theFees;
+            var serviceType = Type;
+        }
+
         public string Fees { get; set; }
         public ServiceType Type { get; set; }
     }
-
     public enum ServiceType
     {
         Haberdasher,
