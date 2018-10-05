@@ -5,9 +5,18 @@ using CLinkedIn.Models;
 
 namespace CLinkedIn.DataAccess
 {
-    class InmateStorage
+    public class InmateStorage
     {
         static List<Inmates> _inmates = new List<Inmates>();
+
+        static InmateStorage()
+        {
+            var jerry = new Inmates { Id = 0, Name = "Jerry", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, Services = new Services { Type = ServiceType.SnuggleBuddy }, Gender = Inmates.Sex.Male };
+            var penelope = new Inmates { Id = 1, Name = "Penelope", IsMember = true, Interests = Interests.HeavyBreathing, Services = new Services { Type = ServiceType.Smuggler }, Gender = Inmates.Sex.Female };
+
+            _inmates.Add(jerry);
+            _inmates.Add(penelope);
+        }
 
         public int counter = 0;
 
@@ -21,6 +30,11 @@ namespace CLinkedIn.DataAccess
         public Inmates GetInmateById(int id)
         {
             return _inmates.Find(inmate => inmate.Id == id);
+        }
+
+        public IEnumerable<Inmates> GetAllInmates()
+        {
+            return _inmates;
         }
     }
 }
