@@ -19,6 +19,5 @@ namespace CLinkedIn.Models
         {
             Male, Female
         }
-
     }
 }
