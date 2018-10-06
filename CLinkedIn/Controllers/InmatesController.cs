@@ -26,20 +26,19 @@ namespace CLinkedIn.Controllers
             return Ok(inmates);
         }
 
-        [HttpGet("Interests/{interests}")]
-        public ActionResult<IEnumerable<Interests>> GetInmatesInterestedInCheezIts(Interests interests)
-        {
-            var storage = new InmateStorage();
-            var interestInmate = storage.GetAllInmates().Where(inmate => inmate.Interests == interests);
-            return Ok(interestInmate);
-        }
-
         [HttpGet("Services/{services}")]
         public ActionResult<IEnumerable<Services>> GetInmatesWithAService(Services services)
         {
             var storage = new InmateStorage();
             var inmateService = storage.GetAllInmates().Where(inmate => inmate.PersonalServices == services);)
             return Ok(inmateService);
+ 
+        [HttpGet("Interests/{interests}")]
+        public ActionResult<IEnumerable<Interests>> GetInmatesInterestedInCheezIts(Interests interests)
+        {
+            var storage = new InmateStorage();
+            var interestInmate = storage.GetAllInmates().Where(inmate => inmate.Interests == interests);
+            return Ok(interestInmate);
         }
     }
 }
