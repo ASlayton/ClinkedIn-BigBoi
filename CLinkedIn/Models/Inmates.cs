@@ -14,6 +14,8 @@ namespace CLinkedIn.Models
         public Interests Interests { get; set; }
         public Services Services { get; set; }
         public Sex Gender { get; set; }
+        public List<Inmates> Friends { get; set; } = new List<Inmates>();
+        public List<Inmates> Enemies { get; set; } = new List<Inmates>();
 
         public enum Sex
         {

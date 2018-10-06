@@ -16,6 +16,14 @@ namespace CLinkedIn.DataAccess
             var rob = new Inmates { Id = 2, Name = "Rob", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, Services = new Services { Type = ServiceType.Smuggler }, Gender = Inmates.Sex.Female };
             var duck = new Inmates { Id = 3, Name = "Duck", IsMember = true, Interests = Interests.InterpretiveDance, Services = new Services { Type = ServiceType.Smuggler}, Gender = Inmates.Sex.Female };
 
+            jerry.Enemies.Add(rob);
+
+            jerry.Friends.Add(penelope);
+            jerry.Friends.Add(duck);
+            penelope.Friends.Add(jerry);
+            rob.Friends.Add(duck);
+            duck.Friends.Add(rob);
+
             _inmates.Add(jerry);
             _inmates.Add(penelope);
             _inmates.Add(duck);
@@ -31,7 +39,7 @@ namespace CLinkedIn.DataAccess
             _inmates.Add(inmates);
         }
 
-        public Inmates GetInmateById(int id)
+        internal Inmates GetInmateById(int id)
         {
             return _inmates.Find(inmate => inmate.Id == id);
         }
