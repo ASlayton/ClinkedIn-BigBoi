@@ -13,8 +13,8 @@ namespace CLinkedIn.DataAccess
         {
             var jerry = new Inmates { Id = 0, Name = "Jerry", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, Services = new Services { Type = ServiceType.SnuggleBuddy }, Gender = Inmates.Sex.Male };
             var penelope = new Inmates { Id = 1, Name = "Penelope", IsMember = true, Interests = Interests.HeavyBreathing, Services = new Services { Type = ServiceType.Smuggler }, Gender = Inmates.Sex.Female };
-            var rob = new Inmates { Id = 1, Name = "Rob", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, Services = new Services { Type = ServiceType.Smuggler }, Gender = Inmates.Sex.Female };
-            var duck = new Inmates { Id = 1, Name = "Duck", IsMember = true, Interests = Interests.InterpretiveDance, Services = new Services { Type = ServiceType.Smuggler }, Gender = Inmates.Sex.Female };
+            var rob = new Inmates { Id = 2, Name = "Rob", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, Services = new Services { Type = ServiceType.Smuggler }, Gender = Inmates.Sex.Female };
+            var duck = new Inmates { Id = 3, Name = "Duck", IsMember = true, Interests = Interests.InterpretiveDance, Services = new Services { Type = ServiceType.Smuggler}, Gender = Inmates.Sex.Female };
 
             _inmates.Add(jerry);
             _inmates.Add(penelope);
