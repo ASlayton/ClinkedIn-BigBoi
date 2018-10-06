@@ -13,28 +13,28 @@ namespace CLinkedIn.Controllers
     [ApiController]
     public class ServicesController : ControllerBase
     {
-        static List<MyServices> Services;
+        static List<Services> Services;
         static ServicesController()
         {
-            Services = new List<MyServices>
+            Services = new List<Services>
             {
-                new MyServices {Type = ServiceType.Haberdasher, Fees = "10 bottlecaps"},
-                new MyServices {Type = ServiceType.Protector, Fees = "100 bottlecaps"},
-                new MyServices {Type = ServiceType.Assassin, Fees = "100000 bottlecaps"},
-                new MyServices {Type = ServiceType.SnuggleBuddy, Fees = "100 bottlecaps"},
-                new MyServices {Type = ServiceType.Smuggler, Fees = "100 bottlecaps"},
-                new MyServices {Type = ServiceType.Priest, Fees = "10 bottlecaps"},
-                new MyServices {Type = ServiceType.Tattooist, Fees = "100 bottlecaps"},
-                new MyServices {Type = ServiceType.Hairdresser, Fees = "50 bottlecaps"},
-                new MyServices {Type = ServiceType.Trainer, Fees = "50 bottlecaps"},
-                new MyServices {Type = ServiceType.Snitch, Fees = "20 bottlecaps"},
-                new MyServices {Type = ServiceType.Mama, Fees = "50 bottlecaps"},
+                new Services {Type = ServiceType.Haberdasher, Fees = FeeType.fourBottleCap},
+                //new Services {Type = ServiceType.Protector, Fees = "100 bottlecaps"},
+                //new Services {Type = ServiceType.Assassin, Fees = "100000 bottlecaps"},
+                //new Services {Type = ServiceType.SnuggleBuddy, Fees = "100 bottlecaps"},
+                // Services {Type = ServiceType.Smuggler, Fees = "100 bottlecaps"},
+                // Services {Type = ServiceType.Priest, Fees = "10 bottlecaps"},
+                //new Services {Type = ServiceType.Tattooist, Fees = "100 bottlecaps"},
+                //new Services {Type = ServiceType.Hairdresser, Fees = "50 bottlecaps"},
+                //new Services {Type = ServiceType.Trainer, Fees = "50 bottlecaps"},
+                //new Services {Type = ServiceType.Snitch, Fees = "20 bottlecaps"},
+                //new Services {Type = ServiceType.Mama, Fees = "50 bottlecaps"},
             };
         }
 
         // GET: api/Services- Returns all Existing Services
         [HttpGet]
-        public ActionResult<IEnumerable<MyServices>> GetAll()
+        public ActionResult<IEnumerable<Services>> GetAll()
         {
             return Services;
         }
@@ -42,7 +42,7 @@ namespace CLinkedIn.Controllers
 
         //POST: api/Services
         [HttpPost]
-        public IActionResult AddAService(MyServices services)
+        public IActionResult AddAService(Services services)
         {
             Services.Add(services);
             return Ok();
@@ -50,7 +50,7 @@ namespace CLinkedIn.Controllers
 
         //Delete: api/Services
         [HttpDelete]
-        public IActionResult DeleteAService(MyServices services)
+        public IActionResult DeleteAService(Services services)
         {
             Services.Remove(services);
             return Ok();

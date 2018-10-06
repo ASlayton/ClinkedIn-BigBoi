@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using CLinkedIn.Models;
+using CLinkedIn.DataAccess;
 
 namespace CLinkedIn.Controllers
 {
@@ -10,30 +11,52 @@ namespace CLinkedIn.Controllers
     [ApiController]
     public class InmatesController : ControllerBase
     {
-        static List<Inmates> Inmate;
+        private readonly InmateStorage _inmates;
 
-        static InmatesController()
+        public InmatesController()
         {
-            Inmate = new List<Inmates>
-            {
-                new Inmates { Id = 3, Name = "Jerry", IsMember = true, Interests = new Interests { Type = InterestType.EatingCheezItsByTheBox}, PersonalServices = new Services("100 bottlecaps", ServiceType.SnuggleBuddy), Gender = Inmates.Sex.Male  },
-                new Inmates { Id = 4, Name = "Penelope", IsMember = true, Interests = new Interests { Type = InterestType.HeavyBreathing}, PersonalServices = new Services("20 bottlecaps", ServiceType.Snitch), Gender = Inmates.Sex.Female  }
-            };
+            _inmates = new InmateStorage();
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<Inmates>> GetAll()
+        {
+            var storage = new InmateStorage();
+            var inmates = storage.GetAllInmates();
+            return Ok(inmates);
+        }
+ 
+        [HttpGet("{Interests}")]
+        public ActionResult<IEnumerable<Interests>> GetInmatesInterestedInCheezIts()
+        {
+            var storage = new InmateStorage();
+            var cheezItsInmate = storage.GetAllInmates().Where(inmate => inmate.Interests == Interests.EatingCheezItsByTheBox);
+            return Ok(cheezItsInmate);
         }
 
 
-        [HttpGet("haberdasher")]
-        public ActionResult<IEnumerable<Inmates>>GetHaberdashers()
+        [HttpGet("service/haberdashers")]
+        public ActionResult<IEnumerable<Inmates>>GetHaberdashers(string service)
         {
-            var haberdashers = Inmate.Where(inmate => inmate.PersonalServices.Equals(ServiceType.Haberdasher));
+            var storage = new InmateStorage();
+            var haberdashers = storage.GetAllInmates().Where(inmate => inmate.PersonalServices.Equals(ServiceType.Haberdasher));
             return Ok(haberdashers);
         }
 
-        [HttpGet("Protectors")]
+        [HttpGet("service/protectors")]
         public ActionResult<IEnumerable<Inmates>> GetProtector()
         {
-            var protectors = Inmate.Where(inmate => inmate.PersonalServices.Equals(ServiceType.Protector));
+            var storage = new InmateStorage();
+            var protectors = storage.GetAllInmates().Where(inmate => inmate.PersonalServices.Equals(ServiceType.Protector));
             return Ok(protectors);
+        }
+
+        [HttpGet("service/assassin")]
+        public ActionResult<IEnumerable<Inmates>> GetAssassin()
+        {
+            var storage = new InmateStorage();
+            var assassin = storage.GetAllInmates().Where(inmate => inmate.PersonalServices.Equals(ServiceType.Assassin));
+            return Ok(assassin);
         }
     }
 }

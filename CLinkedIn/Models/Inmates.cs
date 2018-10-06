@@ -12,13 +12,12 @@ namespace CLinkedIn.Models
         public string Name { get; set; }
         public bool IsMember { get; set; }
         public Interests Interests { get; set; }
-        //public Services Services { get; set; }
+        public Services PersonalServices { get; set; }
         public Sex Gender { get; set; }
-        public List<MyServices> PersonalServices { get; set; } = new List<MyServices>();
+        //public List<Services> PersonalServices { get; set; } = new List<Services>();
         public enum Sex
         {
             Male, Female
         }
-
     }
 }

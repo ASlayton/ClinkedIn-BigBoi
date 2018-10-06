@@ -6,11 +6,7 @@ using CLinkedIn.Models;
 
 namespace CLinkedIn.Models
 {
-    public class Interests
-    {
-        public InterestType Type { get; set; }
-    }
-    public enum InterestType
+    public enum Interests
     {
         LongWalksOnTheBeachInMoonlight,
         PaintingTurtleShells,
