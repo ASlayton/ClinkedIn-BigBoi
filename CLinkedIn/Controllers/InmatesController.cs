@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using CLinkedIn.Models;
 using CLinkedIn.DataAccess;
+using CLinkedIn.Models;
 
 namespace CLinkedIn.Controllers
 {
@@ -13,22 +11,17 @@ namespace CLinkedIn.Controllers
     [ApiController]
     public class InmatesController : ControllerBase
     {
-        //static List<Inmates> Inmate;
-
-        //static InmatesController()
-        //{
-        //Inmate = new List<Inmates>
-        //{
-        //new Inmates { Id = 0, Name = "Jerry", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, Services = new Services {Type = ServiceType.SnuggleBuddy }, Gender = Inmates.Sex.Male  },
-        //new Inmates { Id = 4, Name = "Penelope", IsMember = true, Interests = Interests.HeavyBreathing, Services = new Services {Type = ServiceType.Smuggler }, Gender = Inmates.Sex.Female  }
-        //};
-        //}
-
         private readonly InmateStorage _inmates;
 
         public InmatesController()
         {
             _inmates = new InmateStorage();
+        }
+        // POST: api/Inmates
+        [HttpPost]
+        public void AddACriminal(Inmates inmates)
+        {
+            _inmates.CreateInmate(inmates);
         }
 
         [HttpGet]
@@ -37,6 +30,22 @@ namespace CLinkedIn.Controllers
             var storage = new InmateStorage();
             var inmates = storage.GetAllInmates();
             return Ok(inmates);
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetSingleInmate(int id)
+        {
+            var storage = new InmateStorage();
+            var singleInmate = storage.GetAllInmates().Where(inmate => inmate.Id == id);
+            return Ok(singleInmate);
+        }
+
+
+        [HttpGet("Services/{services}")]
+        public ActionResult<IEnumerable<Services>> GetInmatesWithAService(ServiceType services)
+        {
+            var storage = new InmateStorage();
+            var inmateService = storage.GetAllInmates().Where(inmate => inmate.PersonalServices.Type == services);
+            return Ok(inmateService);
         }
  
         [HttpGet("Interests/{interest}")]
@@ -61,6 +70,54 @@ namespace CLinkedIn.Controllers
             var storage = new InmateStorage();
             var popularInmateEnemies = storage.GetInmateById(id);
             return Ok(popularInmateEnemies.Enemies);
+        }
+
+        [HttpPut("AddFriend/{id}/{friendId}")]
+        public ActionResult AddFriend(int id, int friendId)
+        {
+            var inmates = _inmates.GetAllInmates();
+            var lonelyInmate = inmates.First(inmate => inmate.Id == id);
+            var newFriend = inmates.FirstOrDefault(inmate => inmate.Id == friendId);
+            if (lonelyInmate == null)
+            {
+                return BadRequest();
+            }
+            else if (!lonelyInmate.Friends.Contains(newFriend))
+            {
+                lonelyInmate.Friends.Add(newFriend);
+                return Ok();
+            }
+            else
+            {
+                return Ok();
+            }
+        }
+
+        [HttpPut("AddEnemy/{id}/{enemyId}")]
+        public ActionResult AddEnemy(int id, int enemyId)
+        {
+            var inmates = _inmates.GetAllInmates();
+            var lonelyInmate = inmates.First(inmate => inmate.Id == id);
+            var newEnemy = inmates.FirstOrDefault(inmate => inmate.Id == enemyId);
+            if (lonelyInmate == null)
+            {
+                return BadRequest();
+            }
+            else if (!lonelyInmate.Enemies.Contains(newEnemy))
+            {
+                lonelyInmate.Enemies.Add(newEnemy);
+                return Ok();
+            }
+            else
+            {
+                return Ok();
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            _inmates.DeleteAConvict(id);
         }
     }
 }

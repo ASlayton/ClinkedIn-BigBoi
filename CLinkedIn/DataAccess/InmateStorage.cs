@@ -11,10 +11,11 @@ namespace CLinkedIn.DataAccess
 
         static InmateStorage()
         {
-            var jerry = new Inmates { Id = 0, Name = "Jerry", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, Services = new Services { Type = ServiceType.SnuggleBuddy }, Gender = Inmates.Sex.Male };
-            var penelope = new Inmates { Id = 1, Name = "Penelope", IsMember = true, Interests = Interests.HeavyBreathing, Services = new Services { Type = ServiceType.Smuggler }, Gender = Inmates.Sex.Female };
-            var rob = new Inmates { Id = 2, Name = "Rob", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, Services = new Services { Type = ServiceType.Smuggler }, Gender = Inmates.Sex.Female };
-            var duck = new Inmates { Id = 3, Name = "Duck", IsMember = true, Interests = Interests.InterpretiveDance, Services = new Services { Type = ServiceType.Smuggler}, Gender = Inmates.Sex.Female };
+
+            var jerry = new Inmates { Id = 0, Name = "Jerry", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, PersonalServices = new Services { Type = ServiceType.Haberdasher, Fees = FeeType.fourBottleCap }, Gender = Inmates.Sex.Male };
+            var penelope = new Inmates { Id = 1, Name = "Penelope", IsMember = true, Interests = Interests.HeavyBreathing, PersonalServices = new Services { Type = ServiceType.Smuggler, Fees = FeeType.oneBottlecap }, Gender = Inmates.Sex.Female };
+            var rob = new Inmates { Id = 2, Name = "Rob", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, PersonalServices = new Services { Type = ServiceType.Assassin, Fees = FeeType.threeBottleCap }, Gender = Inmates.Sex.Female };
+            var duck = new Inmates { Id = 3, Name = "Duck", IsMember = true, Interests = Interests.InterpretiveDance, PersonalServices = new Services { Type = ServiceType.Smuggler, Fees = FeeType.oneBottlecap }, Gender = Inmates.Sex.Female };
 
             jerry.Enemies.Add(rob);
 
@@ -30,24 +31,28 @@ namespace CLinkedIn.DataAccess
             _inmates.Add(rob);
         }
 
-
-
         public void CreateInmate(Inmates inmates)
-        {
+        {         
             int counter = 3;
             inmates.Id = counter + 1;
             counter += 1;
             _inmates.Add(inmates);
         }
 
-        internal Inmates GetInmateById(int id)
-        {
-            return _inmates.Find(inmate => inmate.Id == id);
-        }
-
         public IEnumerable<Inmates> GetAllInmates()
         {
             return _inmates;
         }
+
+        public Inmates GetInmateById(int id)
+        {
+            return _inmates.Find(inmate => inmate.Id == id);
+        }
+
+        public void DeleteAConvict(int id)
+        {
+            _inmates.RemoveAll(inmate => inmate.Id == id);
+        }
+
     }
 }

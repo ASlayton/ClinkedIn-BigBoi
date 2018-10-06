@@ -7,10 +7,9 @@ namespace CLinkedIn.Models
 {
     public class Services
     {
-        public string Fees { get; set; }
+        public FeeType Fees { get; set; }
         public ServiceType Type { get; set; }
     }
-
     public enum ServiceType
     {
         Haberdasher,
@@ -24,5 +23,13 @@ namespace CLinkedIn.Models
         Trainer,
         Snitch,
         Mama
+    }
+
+    public enum FeeType
+    {
+        oneBottlecap,
+        twoBottleCap,
+        threeBottleCap,
+        fourBottleCap
     }
 }
