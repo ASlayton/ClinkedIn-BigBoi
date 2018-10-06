@@ -38,8 +38,7 @@ namespace CLinkedIn.DataAccess
 
         public void DeleteAConvict(int id)
         {
-           // var inmateToRemove = _inmates.Find(inmate => inmate.Id == id);
-            _inmates.RemoveAt(id);
+            _inmates.RemoveAll(inmate => inmate.Id == id);
         }
 
     }

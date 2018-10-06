@@ -50,7 +50,7 @@ namespace CLinkedIn.Controllers
             return Ok(cheezItsInmate);
         }
         [HttpDelete("{id}")]
-        public void Delete(int id, Inmates inmates)
+        public void Delete(int id)
         {
             _inmates.DeleteAConvict(id);
             //var storage = new InmateStorage();
