@@ -30,10 +30,11 @@ namespace CLinkedIn.DataAccess
             _inmates.Add(rob);
         }
 
-        public int counter = 0;
+
 
         public void CreateInmate(Inmates inmates)
-        {         
+        {
+            int counter = 3;
             inmates.Id = counter + 1;
             counter += 1;
             _inmates.Add(inmates);
