@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CLinkedIn.DataAccess;
 using CLinkedIn.Models;
@@ -33,7 +31,6 @@ namespace CLinkedIn.Controllers
             var inmates = storage.GetAllInmates();
             return Ok(inmates);
         }
-
         [HttpGet("{id}")]
         public IActionResult GetSingleInmate(int id)
         {
@@ -42,20 +39,27 @@ namespace CLinkedIn.Controllers
             return Ok(singleInmate);
         }
 
-        [HttpGet("{Interests}")]
-        public ActionResult<IEnumerable<Interests>> GetInmatesInterestedInCheezIts()
+
+        [HttpGet("Services/{services}")]
+        public ActionResult<IEnumerable<Services>> GetInmatesWithAService(Services services)
         {
             var storage = new InmateStorage();
-            var cheezItsInmate = storage.GetAllInmates().Where(inmate => inmate.Interests == Interests.EatingCheezItsByTheBox);
-            return Ok(cheezItsInmate);
+            var inmateService = storage.GetAllInmates().Where(inmate => inmate.PersonalServices.Type == services.Type);
+            return Ok(inmateService);
+        }
+ 
+        [HttpGet("Interests/{interests}")]
+        public ActionResult<IEnumerable<Interests>> GetInmatesInterestedInCheezIts(Interests interests)
+        {
+            var storage = new InmateStorage();
+            var interestInmate = storage.GetAllInmates().Where(inmate => inmate.Interests == interests);
+            return Ok(interestInmate);
         }
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             _inmates.DeleteAConvict(id);
-            //var storage = new InmateStorage();
-            //storage.GetAllInmates().ToList().Remove(inmate => inmate.Id == id);
-            // _inmates.GetAllInmates().ToList().Remove(inmates => inmates.Id == id);
+
         }
     }
 }
