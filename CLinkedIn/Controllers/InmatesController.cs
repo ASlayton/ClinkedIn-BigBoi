@@ -30,8 +30,9 @@ namespace CLinkedIn.Controllers
         public ActionResult<IEnumerable<Services>> GetInmatesWithAService(Services services)
         {
             var storage = new InmateStorage();
-            var inmateService = storage.GetAllInmates().Where(inmate => inmate.PersonalServices == services);)
+            var inmateService = storage.GetAllInmates().Where(inmate => inmate.PersonalServices.Type == services.Type);
             return Ok(inmateService);
+        }
  
         [HttpGet("Interests/{interests}")]
         public ActionResult<IEnumerable<Interests>> GetInmatesInterestedInCheezIts(Interests interests)

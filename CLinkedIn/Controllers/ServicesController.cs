@@ -19,18 +19,17 @@ namespace CLinkedIn.Controllers
             Services = new List<Services>
             {
                 new Services {Type = ServiceType.Haberdasher, Fees = FeeType.fourBottleCap},
-                //new Services {Type = ServiceType.Protector, Fees = "100 bottlecaps"},
-                //new Services {Type = ServiceType.Assassin, Fees = "100000 bottlecaps"},
-                //new Services {Type = ServiceType.SnuggleBuddy, Fees = "100 bottlecaps"},
-                // Services {Type = ServiceType.Smuggler, Fees = "100 bottlecaps"},
-                // Services {Type = ServiceType.Priest, Fees = "10 bottlecaps"},
-                //new Services {Type = ServiceType.Tattooist, Fees = "100 bottlecaps"},
-                //new Services {Type = ServiceType.Hairdresser, Fees = "50 bottlecaps"},
-                //new Services {Type = ServiceType.Trainer, Fees = "50 bottlecaps"},
-                //new Services {Type = ServiceType.Snitch, Fees = "20 bottlecaps"},
-                //new Services {Type = ServiceType.Mama, Fees = "50 bottlecaps"},
-            };
-        }
+                new Services {Type = ServiceType.Protector, Fees = FeeType.oneBottlecap},
+                new Services {Type = ServiceType.Assassin, Fees = FeeType.oneBottlecap},
+                new Services {Type = ServiceType.SnuggleBuddy, Fees = FeeType.oneBottlecap},
+                new Services {Type = ServiceType.Smuggler, Fees = FeeType.oneBottlecap},
+                new Services {Type = ServiceType.Priest, Fees = FeeType.oneBottlecap},
+                new Services {Type = ServiceType.Tattooist, Fees = FeeType.oneBottlecap},
+                new Services {Type = ServiceType.Hairdresser, Fees = FeeType.oneBottlecap},
+                new Services {Type = ServiceType.Trainer, Fees = FeeType.oneBottlecap},
+                new Services {Type = ServiceType.Snitch, Fees = FeeType.oneBottlecap},
+                new Services {Type = ServiceType.Mama, Fees = FeeType.oneBottlecap},
+            };        }
 
         // GET: api/Services- Returns all Existing Services
         [HttpGet]
