@@ -25,38 +25,21 @@ namespace CLinkedIn.Controllers
             var inmates = storage.GetAllInmates();
             return Ok(inmates);
         }
- 
-        [HttpGet("{Interests}")]
-        public ActionResult<IEnumerable<Interests>> GetInmatesInterestedInCheezIts()
+
+        [HttpGet("Interests/{interests}")]
+        public ActionResult<IEnumerable<Interests>> GetInmatesInterestedInCheezIts(Interests interests)
         {
             var storage = new InmateStorage();
-            var cheezItsInmate = storage.GetAllInmates().Where(inmate => inmate.Interests == Interests.EatingCheezItsByTheBox);
-            return Ok(cheezItsInmate);
+            var interestInmate = storage.GetAllInmates().Where(inmate => inmate.Interests == interests);
+            return Ok(interestInmate);
         }
 
-
-        [HttpGet("service/haberdashers")]
-        public ActionResult<IEnumerable<Inmates>>GetHaberdashers(string service)
+        [HttpGet("Services/{services}")]
+        public ActionResult<IEnumerable<Services>> GetInmatesWithAService(Services services)
         {
             var storage = new InmateStorage();
-            var haberdashers = storage.GetAllInmates().Where(inmate => inmate.PersonalServices.Equals(ServiceType.Haberdasher));
-            return Ok(haberdashers);
-        }
-
-        [HttpGet("service/protectors")]
-        public ActionResult<IEnumerable<Inmates>> GetProtector()
-        {
-            var storage = new InmateStorage();
-            var protectors = storage.GetAllInmates().Where(inmate => inmate.PersonalServices.Equals(ServiceType.Protector));
-            return Ok(protectors);
-        }
-
-        [HttpGet("service/assassin")]
-        public ActionResult<IEnumerable<Inmates>> GetAssassin()
-        {
-            var storage = new InmateStorage();
-            var assassin = storage.GetAllInmates().Where(inmate => inmate.PersonalServices.Equals(ServiceType.Assassin));
-            return Ok(assassin);
+            var inmateService = storage.GetAllInmates().Where(inmate => inmate.PersonalServices == services);)
+            return Ok(inmateService);
         }
     }
 }
