@@ -7,29 +7,13 @@ namespace CLinkedIn.DataAccess
 {
     public class InmateStorage
     {
-        static List<Inmates> _inmates = new List<Inmates>();
-
-        static InmateStorage()
+        static List<Inmates> _inmates = new List<Inmates>()
         {
-
-            var jerry = new Inmates { Id = 0, Name = "Jerry", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, PersonalServices = new Services { Type = ServiceType.Haberdasher, Fees = FeeType.fourBottleCap }, Gender = Inmates.Sex.Male };
-            var penelope = new Inmates { Id = 1, Name = "Penelope", IsMember = true, Interests = Interests.HeavyBreathing, PersonalServices = new Services { Type = ServiceType.Smuggler, Fees = FeeType.oneBottlecap }, Gender = Inmates.Sex.Female };
-            var rob = new Inmates { Id = 2, Name = "Rob", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, PersonalServices = new Services { Type = ServiceType.Assassin, Fees = FeeType.threeBottleCap }, Gender = Inmates.Sex.Female };
-            var duck = new Inmates { Id = 3, Name = "Duck", IsMember = true, Interests = Interests.InterpretiveDance, PersonalServices = new Services { Type = ServiceType.Smuggler, Fees = FeeType.oneBottlecap }, Gender = Inmates.Sex.Female };
-
-            jerry.Enemies.Add(rob);
-
-            jerry.Friends.Add(penelope);
-            jerry.Friends.Add(duck);
-            penelope.Friends.Add(jerry);
-            rob.Friends.Add(duck);
-            duck.Friends.Add(rob);
-
-            _inmates.Add(jerry);
-            _inmates.Add(penelope);
-            _inmates.Add(duck);
-            _inmates.Add(rob);
-        }
+            new Inmates { Id = 0, Name = "Jerry", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, PersonalServices = new Services { Type = ServiceType.Haberdasher, Fees = FeeType.fourBottleCap }, Gender = Inmates.Sex.Male },
+            new Inmates { Id = 1, Name = "Penelope", IsMember = true, Interests = Interests.HeavyBreathing, PersonalServices = new Services { Type = ServiceType.Smuggler, Fees = FeeType.oneBottlecap }, Gender = Inmates.Sex.Female },
+            new Inmates { Id = 2, Name = "Rob", IsMember = true, Interests = Interests.EatingCheezItsByTheBox, PersonalServices = new Services { Type = ServiceType.Assassin, Fees = FeeType.threeBottleCap }, Gender = Inmates.Sex.Female },
+            new Inmates { Id = 3, Name = "Duck", IsMember = true, Interests = Interests.InterpretiveDance, PersonalServices = new Services { Type = ServiceType.Smuggler, Fees = FeeType.oneBottlecap }, Gender = Inmates.Sex.Female },
+        };
 
         public void CreateInmate(Inmates inmates)
         {         
