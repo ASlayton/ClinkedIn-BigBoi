@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using CLinkedIn.Models;
 using CLinkedIn.DataAccess;
+using CLinkedIn.Models;
 
 namespace CLinkedIn.Controllers
 {
@@ -17,6 +17,12 @@ namespace CLinkedIn.Controllers
         {
             _inmates = new InmateStorage();
         }
+        // POST: api/Inmates
+        [HttpPost]
+        public void AddACriminal(Inmates inmates)
+        {
+            _inmates.CreateInmate(inmates);
+        }
 
         [HttpGet]
         public ActionResult<IEnumerable<Inmates>> GetAll()
@@ -25,6 +31,14 @@ namespace CLinkedIn.Controllers
             var inmates = storage.GetAllInmates();
             return Ok(inmates);
         }
+        [HttpGet("{id}")]
+        public IActionResult GetSingleInmate(int id)
+        {
+            var storage = new InmateStorage();
+            var singleInmate = storage.GetAllInmates().Where(inmate => inmate.Id == id);
+            return Ok(singleInmate);
+        }
+
 
         [HttpGet("Services/{services}")]
         public ActionResult<IEnumerable<Services>> GetInmatesWithAService(Services services)
@@ -40,6 +54,12 @@ namespace CLinkedIn.Controllers
             var storage = new InmateStorage();
             var interestInmate = storage.GetAllInmates().Where(inmate => inmate.Interests == interests);
             return Ok(interestInmate);
+        }
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            _inmates.DeleteAConvict(id);
+
         }
     }
 }
