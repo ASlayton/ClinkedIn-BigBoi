@@ -50,9 +50,12 @@ namespace CLinkedIn.Controllers
             return Ok(cheezItsInmate);
         }
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(int id, Inmates inmates)
         {
-
+            _inmates.DeleteAConvict(id);
+            //var storage = new InmateStorage();
+            //storage.GetAllInmates().ToList().Remove(inmate => inmate.Id == id);
+            // _inmates.GetAllInmates().ToList().Remove(inmates => inmates.Id == id);
         }
     }
 }

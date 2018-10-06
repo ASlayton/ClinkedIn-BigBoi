@@ -36,10 +36,10 @@ namespace CLinkedIn.DataAccess
             return _inmates;
         }
 
-        public Inmates DeleteAConvict(int id)
+        public void DeleteAConvict(int id)
         {
-            var inmateToRemove = _inmates.Find(inmate => inmate.Id == id);
-            return inmateToRemove;
+           // var inmateToRemove = _inmates.Find(inmate => inmate.Id == id);
+            _inmates.RemoveAt(id);
         }
 
     }
