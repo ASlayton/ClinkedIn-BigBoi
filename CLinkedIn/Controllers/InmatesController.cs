@@ -4,9 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ClinkedIn_BigBoi.DataAccess;
-using ClinkedIn_BigBoi.Models;
-
+using CLinkedIn.DataAccess;
+using CLinkedIn.Models;
 
 namespace CLinkedIn.Controllers
 {
@@ -20,7 +19,6 @@ namespace CLinkedIn.Controllers
         {
             _inmates = new InmateStorage();
         }
-
         // POST: api/Inmates
         [HttpPost]
         public void AddACriminal(Inmates inmates)
@@ -28,5 +26,33 @@ namespace CLinkedIn.Controllers
             _inmates.CreateInmate(inmates);
         }
 
+        [HttpGet]
+        public ActionResult<IEnumerable<Inmates>> GetAll()
+        {
+            var storage = new InmateStorage();
+            var inmates = storage.GetAllInmates();
+            return Ok(inmates);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetSingleInmate(int id)
+        {
+            var storage = new InmateStorage();
+            var singleInmate = storage.GetAllInmates().Where(inmate => inmate.Id == id);
+            return Ok(singleInmate);
+        }
+
+        [HttpGet("{Interests}")]
+        public ActionResult<IEnumerable<Interests>> GetInmatesInterestedInCheezIts()
+        {
+            var storage = new InmateStorage();
+            var cheezItsInmate = storage.GetAllInmates().Where(inmate => inmate.Interests == Interests.EatingCheezItsByTheBox);
+            return Ok(cheezItsInmate);
+        }
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+
+        }
     }
 }

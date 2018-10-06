@@ -4,7 +4,7 @@ using System.Text;
 using CLinkedIn.Models;
 
 
-namespace ClinkedIn_BigBoi.Models
+namespace CLinkedIn.Models
 {
     public class Inmates
     {
@@ -19,6 +19,5 @@ namespace ClinkedIn_BigBoi.Models
         {
             Male, Female
         }
-
     }
 }

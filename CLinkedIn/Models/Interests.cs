@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CLinkedIn.Models;
 
 namespace CLinkedIn.Models
 {
-    public class Interests
-    {
-        public InterestType Type { get; set; }
-    }
-    public enum InterestType
+    public enum Interests
     {
         LongWalksOnTheBeachInMoonlight,
         PaintingTurtleShells,
